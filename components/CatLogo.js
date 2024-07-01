@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect } from 'react';
 import p5 from 'p5';
 
@@ -23,22 +21,16 @@ const CatLogo = () => {
       // Draw cat face
       p.fill(255);
       p.stroke(0);
-      p.ellipse(50, 50, 80, 80); // 更圓潤的臉部
-    
+      p.ellipse(50, 50, 80, 80); // Face
       // Adjusted ears to be more cat-like
-      p.triangle(30, 45, 50, 5, 40, 50); // Left ear
-      p.triangle(70, 45, 50, 5, 60, 50); // Right ear
-    
+      p.triangle(30, 40, 50, 20, 40, 50); // Left ear
+      p.triangle(70, 40, 50, 20, 60, 50); // Right ear
+
       // Draw eyes more cat-like
       p.fill(0);
-      if (expression === 1) { // Angry
-        p.ellipse(40, 50, 8, 20); // Left eye
-        p.ellipse(60, 50, 8, 20); // Right eye
-      } else {
-        p.ellipse(40, 50, 12, 20); // Left eye
-        p.ellipse(60, 50, 12, 20); // Right eye
-      }
-    
+      p.ellipse(40, 50, 12, 20); // Left eye
+      p.ellipse(60, 50, 12, 20); // Right eye
+
       // Draw mouth based on expression
       p.strokeWeight(2);
       switch (expression) {
@@ -47,6 +39,8 @@ const CatLogo = () => {
           break;
         case 1: // Angry
           p.line(40, 70, 60, 70);
+          p.arc(40, 60, 10, 20, p.PI, 0);
+          p.arc(60, 60, 10, 20, p.PI, 0);
           break;
         case 2: // Sad
           p.arc(50, 70, 30, 20, p.PI, 0);
@@ -56,11 +50,6 @@ const CatLogo = () => {
           p.line(40, 60, 60, 60);
           break;
       }
-    
-      // Adding whiskers and a nose for more detail
-      p.line(30, 50, 20, 50); // Left whisker
-      p.line(70, 50, 80, 50); // Right whisker
-      p.ellipse(50, 50, 5, 5); // Nose
     };
   };
 
